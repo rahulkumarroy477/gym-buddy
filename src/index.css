@@ -14,7 +14,7 @@ header{
     background: #fff;
 }
 header .container{
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 10px 20px;
     display: flex;
@@ -27,11 +27,17 @@ header a{
     text-decoration: none;
 }
 .pages{
-    max-width: 1200px;
-    padding: 20px;
+    max-width: 1000px;
+    padding: 15px;
     margin: 0 auto;
 }
-
+.workouts{
+    max-height: 75vh;
+    overflow-y: scroll;
+}
+.workouts::-webkit-scrollbar{
+    display: none;
+}
 /* Homepage */
 
 .home{
@@ -70,4 +76,37 @@ header a{
     padding: 6px;
     border-radius: 50%;
     color: #333;
+}
+
+/* New workout form */
+label,input{
+    display: block;
+}
+
+input{
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border-radius: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form button{
+    background: var(--primary);
+    border: 0;
+    color: #fff;
+    padding: 10px;
+    font-family: "Poppins";
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+div.error{
+    padding: 10px;
+    background-color: #ffefef;
+    border: 1px solid var(--error);
+    color: var(--error);
+    margin: 20px 0;
 }
