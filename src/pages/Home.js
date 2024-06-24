@@ -2,11 +2,12 @@ import { useEffect } from 'react';
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 import WorkoutDetail from '../components/WorkoutDetail';
 import WorkoutForm from '../components/WorkoutForm';
+const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
 function Home() {
   const {workouts, dispatch} = useWorkoutsContext();
   useEffect(() => {
     const fetchWorkout = async ()=>{
-      const response = await fetch("/api/workouts");
+      const response = await fetch(`${apiUrl}/api/workouts`);
       const json = await response.json();   // json will be an array of docs
 
       if(response.ok){

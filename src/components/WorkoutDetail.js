@@ -1,10 +1,12 @@
 import React from 'react';
 import {useWorkoutsContext} from '../hooks/useWorkoutsContext'
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
+
+const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
 function WorkoutDetail({workout}) {
   const {dispatch} = useWorkoutsContext();
   const handleClick = async () =>{
-    const response =  await fetch('/api/workouts/'+workout._id,{
+    const response =  await fetch(`${apiUrl}/api/workouts/${workout._id}`,{
       method: 'DELETE',
     })
 
