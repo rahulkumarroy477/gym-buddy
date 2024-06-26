@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 
-:root{
+:root {
     --primary: #1aac83;
-    --error:#e7195a;
+    --error: #e7195a;
 }
-body{
+
+body {
     background: #f1f1f1;
     margin: 0;
     font-family: "Poppins";
 }
-header{
+
+header {
     background: #fff;
 }
-header .container{
+
+header .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 10px 20px;
@@ -22,31 +25,35 @@ header .container{
     justify-content: space-between;
 }
 
-header a{
+header a {
     color: #333;
     text-decoration: none;
 }
-.pages{
+
+.pages {
     max-width: 1000px;
     padding: 15px;
     margin: 0 auto;
 }
-.workouts{
+
+.workouts {
     max-height: 75vh;
     overflow-y: scroll;
 }
-.workouts::-webkit-scrollbar{
+
+.workouts::-webkit-scrollbar {
     display: none;
 }
+
 /* Homepage */
 
-.home{
+.home {
     display: grid;
     grid-template-columns: 3fr 1fr;
     gap: 100px;
 }
 
-.workout-details{
+.workout-details {
     background-color: #fff;
     border-radius: 4px;
     margin: 20px auto;
@@ -55,19 +62,19 @@ header a{
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
 }
 
-.workout-details h4{
+.workout-details h4 {
     margin: 0 0 10px 0;
     font-size: 1.2em;
     color: var(--primary);
 }
 
-.workout-details p{
+.workout-details p {
     margin: 0;
     font-size: 0.9em;
     color: #555;
 }
 
-.workout-details span{
+.workout-details span {
     position: absolute;
     top: 20px;
     right: 20px;
@@ -79,11 +86,12 @@ header a{
 }
 
 /* New workout form */
-label,input{
+label,
+input {
     display: block;
 }
 
-input{
+input {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -93,7 +101,7 @@ input{
     box-sizing: border-box;
 }
 
-form button{
+form button {
     background: var(--primary);
     border: 0;
     color: #fff;
@@ -103,13 +111,43 @@ form button{
     cursor: pointer;
 }
 
-div.error{
+div.error {
     padding: 10px;
     background-color: #ffefef;
     border: 1px solid var(--error);
     color: var(--error);
     margin: 20px 0;
 }
-input.error{
+
+input.error {
     border: 1px solid var(--error);
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+}
+
+.spinner {
+    border: 12px solid #f3f3f3;
+    /* Light grey */
+    border-top: 12px solid #3498db;
+    /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
