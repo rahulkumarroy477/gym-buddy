@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
+import {useAuthContext} from '../hooks/useAuthContext';
 // form handling
-const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
+// const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
+const apiUrl = "http://localhost:4000";
 function WorkoutForm() {
 
+    const {user} = useAuthContext();
     const {dispatch} = useWorkoutsContext();
     const [title, setTitle] = useState('');
     const [reps, setReps] = useState('');
@@ -13,13 +16,18 @@ function WorkoutForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        
+        if(!user){
+            setError('You must log in first')
+            return
+        }
         const workout = { title, load, reps };
         const response = await fetch(`${apiUrl}/api/workouts`, {
             method: 'POST',
             body: JSON.stringify(workout),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
             }
         })
 
