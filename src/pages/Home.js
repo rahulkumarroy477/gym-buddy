@@ -5,8 +5,8 @@ import { useAuthContext } from '../hooks/useAuthContext'
 import WorkoutDetail from '../components/WorkoutDetail';
 import WorkoutForm from '../components/WorkoutForm';
 
-// const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
-const apiUrl = "http://localhost:4000";
+const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
+// const apiUrl = "http://localhost:4000";
 
 function Home() {
   const { workouts, dispatch } = useWorkoutsContext();
@@ -21,7 +21,6 @@ function Home() {
           'Authorization': `Bearer ${user.token}`
         }
       });
-      // const response = await fetch(`/api/workouts`);
       const json = await response.json(); // json will be an array of docs
 
       if (response.ok) {
@@ -33,7 +32,7 @@ function Home() {
     if (user) {
       fetchWorkouts();
     }
-  }, [dispatch]);
+  }, [user,dispatch]);
 
   return (
     <div className="home">

@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 import {useAuthContext} from '../hooks/useAuthContext';
 // form handling
-// const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
-const apiUrl = "http://localhost:4000";
+
+const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
+// const apiUrl = "http://localhost:4000";
+
 function WorkoutForm() {
 
     const {user} = useAuthContext();

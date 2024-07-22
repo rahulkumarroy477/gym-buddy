@@ -2,8 +2,9 @@ import React from 'react';
 import {useWorkoutsContext} from '../hooks/useWorkoutsContext'
 import { formatDistanceToNow } from "date-fns/formatDistanceToNow";
 import { useAuthContext } from '../hooks/useAuthContext';
-// const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
-const apiUrl = "http://localhost:4000";
+
+const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
+// const apiUrl = "http://localhost:4000";
 function WorkoutDetail({workout}) {
   const {dispatch} = useWorkoutsContext();
   const {user} = useAuthContext();

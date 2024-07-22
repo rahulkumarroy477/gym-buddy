@@ -1,40 +1,42 @@
 import { useState } from "react";
-import {useAuthContext} from './useAuthContext'
+import { useAuthContext } from './useAuthContext'
 
 export const useLogin = () => {
-    const [error,setError]  = useState(null);
+    const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
-    const url = "http://localhost:4000"
-    const {dispatch} = useAuthContext();
 
-    const login = async (email,password) => {
+    const apiUrl = "https://gym-buddy-backend-342b.onrender.com";
+    // const apiUrl = "http://localhost:4000";
+    const { dispatch } = useAuthContext();
+
+    const login = async (email, password) => {
         setIsLoading(true);
         setError(null);
-        
-        const response = await fetch(`${url}/api/user/login`,{
+
+        const response = await fetch(`${apiUrl}/api/user/login`, {
             method: 'POST',
-            headers: {'Content-Type':'application/json',
-                'Referrer-Policy': 'no-referrer'
+            headers: {
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({email,password})
+            body: JSON.stringify({ email, password })
         })
         const json = await response.json();
 
-        if(!response.ok){
+        if (!response.ok) {
             setIsLoading(false);
             setError(json.error)
         }
 
-        if(response.ok){
+        if (response.ok) {
             console.log(response);
             // save the user to local storage
-            localStorage.setItem('user',JSON.stringify(json));
+            localStorage.setItem('user', JSON.stringify(json));
 
             // update the auth context
-            dispatch({type:'LOGIN',payload: json});
+            dispatch({ type: 'LOGIN', payload: json });
             setIsLoading(false);
         }
     }
 
-    return {login, isLoading, error}
+    return { login, isLoading, error }
 }
